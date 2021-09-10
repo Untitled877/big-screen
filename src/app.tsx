@@ -9,7 +9,7 @@ function App() {
       <HashRouter>
         <Switch>
           <Route>
-            <Home />
+            <Home/>
           </Route>
         </Switch>
       </HashRouter>
