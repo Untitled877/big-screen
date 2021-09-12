@@ -169,7 +169,7 @@
     .时段分析 {
       height: px(380);
     }
-    .战果数对比 {
+    .战果数对比, .作案手段 {
       height: px(350);
       padding: 0 px(24);
       color: #cdcfda;
@@ -193,6 +193,16 @@
             background: #1c2457;
           }
         }
+      }
+    }
+    .作案手段 {
+      > table {
+        tbody {
+          td {
+            height: px(26);
+          }
+        }
+        margin-bottom: px(20);
       }
     }
     .分布地 {

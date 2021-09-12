@@ -65,7 +65,7 @@ export const Home = () => {
         </section>
       </main>
       <footer>
-        大屏数据平台利用大数据技术采集犯罪作案信息是一套实时监控的数据系统Copyright&copy2017兰州市公安局
+        大屏数据平台利用大数据技术采集犯罪作案信息是一套实时监控的数据系统Copyright&copy;2017兰州市公安局
       </footer>
     </div>
   );
