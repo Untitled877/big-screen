@@ -232,7 +232,6 @@
       }
       &-图一, &-图二 {
         .chart {
-          border: px(1) solid red;
           position: relative;
           display: flex;
           > .main {flex:1;}
@@ -250,6 +249,21 @@
           @extend %legend;
           .male { background: #33a4fa;}
           .female {background: #8d70f8;}
+        }
+      }
+      &-图二 {
+        width: px(290);
+        flex-shrink: 0;
+        .legend {
+          justify-content: flex-start;
+        }
+      }
+      &-图三 {
+        border: px(2) solid #0b2c65;
+        h3 {
+          font-size: px(20);
+          color: #67a1c9;
+          margin-top: px(6);
         }
       }
     }
