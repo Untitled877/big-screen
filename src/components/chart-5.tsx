@@ -1,69 +1,34 @@
 import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
+import { px } from '../shared/px';
 
-const px = (n) => n / 2420 * (window as any).pageWidth;
-export const Chart1 = () => {
-  const divRef = useRef(null);
-  useEffect(() => {
-    let myChart = echarts.init(divRef.current);
-    myChart.setOption({
-      textStyle: {
-        fontSize: px(12),
-        color: '#79839E'
-      },
-      title: {show: false},
-      legend: {show: false},
-      xAxis: {
-        data: ['城关区', '七里河区', '西固区', '安宁区', '红谷区', '永登区', '皋兰区', '榆中区', '兰州新区'],
-        axisTick: {show: false},
-        axisLine: {
-          lineStyle: {color: '#083B70'}
-        },
-        axisLabel: {
-          fontSize: px(12),
-          margin: px(8),
-          formatter(val) {
-            if (val.length > 2) {
-              const array = val.split('');
-              array.splice(2, 0, '\n');
-              return array.join('');
-            } else {
-              return val;
-            }
-          }
-        },
-      },
-      grid: {
-        x: px(40),
-        y: px(40),
-        x2: px(40),
-        y2: px(40),
-      },
-      yAxis: {
-        splitLine: {show: false},
-        axisLine: {
-          show: true,
-          lineStyle: {color: '#083B70'}
-        },
-        axisLabel: {
-          fontSize: px(12),
-          margin: px(8)
-        }
-      },
-      series: [{
-        type: 'bar',
-        data: [40, 30, 25, 16, 23, 13, 18, 27, 32]
-      }]
-    });
-  }, []);
-
-
+export const Chart5 = () => {
   return (
-    <div className="bordered 管辖统计">
-      <h2>案发派出所管辖统计</h2>
-      <div ref={divRef} className="chart">
-
-      </div>
+    <div className="bordered 战果数对比">
+      <h2>往年战果数对比</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>类型</th><th>破案数</th><th>抓获嫌疑人</th>
+          <th>并串案件</th><th>现勘录入</th><th>视帧录入</th>
+          <th>合成案件数</th><th>合计</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>2015</td><td>2</td><td>3</td><td>50</td>
+          <td>22</td><td>400</td><td>600</td><td>1500</td>
+        </tr>
+        <tr>
+          <td>2016</td><td>3</td><td>4</td><td>20</td>
+          <td>100</td><td>500</td><td>800</td><td>2000</td>
+        </tr>
+        <tr>
+          <td>2017</td><td>4</td><td>5</td><td>10</td>
+          <td>50</td><td>550</td><td>750</td><td>1800</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   );
 };

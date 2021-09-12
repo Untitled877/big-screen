@@ -87,7 +87,7 @@
     > .section5 {
       grid-area: box5;
     }
-    .管辖统计, .破获排名, .发案趋势, .时段分析 {
+    .管辖统计, .破获排名, .发案趋势, .时段分析, .战果数对比{
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -135,6 +135,32 @@
     }
     .时段分析 {
       height: px(380);
+    }
+    .战果数对比 {
+      height: px(350);
+      padding: 0 px(24);
+      color: #cdcfda;
+      > table {
+        width: 100%;
+        margin-top: px(25);
+        table-layout: fixed;
+        border-collapse: collapse;
+        th, td {
+          border: px(1) solid #10488c;
+        }
+        thead {
+          th {
+            height: px(70);
+            box-shadow: inset 0 0 px(60) 0 #1f3d85;
+          }
+        }
+        tbody {
+          td {
+            height: px(50);
+            background: #1c2457;
+          }
+        }
+      }
     }
   }
 }
