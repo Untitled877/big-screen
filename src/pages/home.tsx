@@ -6,6 +6,8 @@ import {Chart2} from '../components/chart-2';
 import {Chart3} from '../components/chart-3';
 import {Chart4} from '../components/chart-4';
 import {Chart5} from '../components/chart-5';
+import {Chart6} from '../components/chart-6';
+import {Chart7} from '../components/chart-7';
 
 export const Home = () => {
   return (
@@ -23,7 +25,13 @@ export const Home = () => {
         <section className="section3">
           <Chart5/>
         </section>
-        <section className="bordered section4"/>
+        <section className="section4">
+          <Chart6/>
+          <div className="bordered">
+            <h2>兰州市犯罪人员年龄段分布</h2>
+            <Chart7/>
+          </div>
+        </section>
         <section className="bordered section5"/>
       </main>
       <footer>

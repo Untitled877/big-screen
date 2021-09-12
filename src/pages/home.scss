@@ -87,7 +87,7 @@
     > .section5 {
       grid-area: box5;
     }
-    .管辖统计, .破获排名, .发案趋势, .时段分析, .战果数对比{
+    .管辖统计, .破获排名, .发案趋势, .时段分析, .战果数对比, .分布地{
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -159,6 +159,41 @@
             height: px(50);
             background: #1c2457;
           }
+        }
+      }
+    }
+    .分布地 {
+      height: px(770);
+      background: transparent;
+      > .wrapper {
+        flex: 1;
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .chart {
+          flex: 1;
+        }
+        .legend {
+          position: absolute;
+          top: px(40);
+          left: px(20);
+          display: flex;
+          align-items: center;
+          font-size: px(22);
+          padding: px(20) px(10) px(20) 0;
+          .icon {
+            width: px(16);
+            height: px(16);
+            display: inline-block;
+            margin: 0 px(10);
+            border-radius: 50%;
+          }
+        }
+        .notes {
+          position: absolute;
+          right: px(10);
+          bottom: px(10);
         }
       }
     }
