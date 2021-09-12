@@ -3,7 +3,7 @@ import * as echarts from 'echarts';
 import {px} from '../shared/px';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 
-export const Chart7 = () => {
+export const Chart10 = () => {
   const divRef = useRef(null);
   useEffect(() => {
     let myChart = echarts.init(divRef.current);

@@ -1,5 +1,21 @@
 @import "../shared/helper";
 
+%legend {
+  margin-top: px(10);
+  height: px(40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-right: px(10);
+  > span {
+    display: inline-block;
+    width: px(16);
+    height: px(10);
+    border-radius: px(2);
+    margin: 0 px(10);
+  }
+}
 .home {
   flex: 1;
   display: flex;
@@ -87,7 +103,7 @@
     > .section5 {
       grid-area: box5;
     }
-    .管辖统计, .破获排名, .发案趋势, .时段分析, .战果数对比, .分布地{
+    .管辖统计, .破获排名, .发案趋势, .时段分析, .战果数对比, .分布地, .年龄段分布{
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -100,6 +116,11 @@
         line-height: px(24);
         padding: px(10) px(28);
         text-shadow: 0 0 px(3) white;
+      }
+      .charts {
+        width:100%;
+        flex:1;
+        display: flex;
       }
       .chart {
         flex: 1;
@@ -197,5 +218,41 @@
         }
       }
     }
+    .年龄段分布 {
+      display: flex;
+      flex-direction: column;
+      height: px(363);
+      > .charts {
+        padding: px(30);
+      }
+      &-图一, &-图二, &-图三 {
+        flex:1;
+        display: flex;
+        flex-direction: column;
+      }
+      &-图一, &-图二 {
+        .chart {
+          border: px(1) solid red;
+          position: relative;
+          display: flex;
+          > .main {flex:1;}
+          > .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #33a4fa; font-size: px(40);
+            text-shadow: 0 0 px(20) #33a4fa;
+            font-weight: bold;
+          }
+        }
+        .legend {
+          @extend %legend;
+          .male { background: #33a4fa;}
+          .female {background: #8d70f8;}
+        }
+      }
+    }
+
   }
 }

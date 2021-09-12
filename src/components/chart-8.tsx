@@ -3,96 +3,62 @@ import * as echarts from 'echarts';
 import {px} from '../shared/px';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 
-export const Chart7 = () => {
+export const Chart8 = () => {
   const divRef = useRef(null);
+  const colors = ['#33a4fa','#f46064','#856bed','#f38e1c', '#1cdb7c'];
   useEffect(() => {
     let myChart = echarts.init(divRef.current);
     myChart.setOption(createEchartsOptions({
-      legend: {
-        bottom: px(0),
-        textStyle: {color: 'white'},
-        itemWidth: px(30),
-        itemHeight: px(16),
-        itemGap:px(5)
-      },
-      grid: {
-        x: px(40),
-        y: px(20),
-        x2: px(20),
-        y2: px(90),
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017],
-        axisTick: {show: false},
-        axisLine: {show: false},
-        splitLine: {
-          show: true,
-          lineStyle: {
-            color: '#083970',
-          }
-        },
-        axisLabel: {
-          margin: px(8),
-        }
-      },
-      yAxis: {
-        type: 'value',
-        splitLine: {
-          show: true,
-          lineStyle: {
-            color: '#083970'
-          }
-        },
-        axisLabel: {
-          margin: px(4),
-          formatter(val) {
-            return val * 100 + '%';
-          }
-        }
-      },
+      color: colors,
+      xAxis: {show: false},
+      yAxis: {show: false},
+      legend: {show: false},
       series: [
         {
-          name: '抢劫',
-          type: 'line',
-          data: [0.15, 0.23, 0.07, 0.36, 0.12, 0.07, 0.09, 0.10]
-        },
-        {
-          name: '盗窃',
-          type: 'line',
-          data: [0.23, 0.07, 0.19, 0.20, 0.04, 0.15, 0.32, 0.12]
-        },
-        {
-          name: '盗窃2',
-          type: 'line',
-          data: [0.04, 0.12, 0.32, 0.15, 0.07, 0.25, 0.14, 0.36]
-        },
-        {
-          name: '盗窃3',
-          type: 'line',
-          data: [0.02, 0.13, 0.01, 0.15, 0.14, 0.21, 0.07, 0.19]
-        },
-        {
-          name: '故意杀人',
-          type: 'line',
-          data: [0.03, 0.21, 0.45, 0.14, 0.07, 0.13, 0.05, 0.36]
+          type: 'pie',
+          radius: ['75%', '90%'],
+          avoidLabelOverlap: false,
+          label: {
+            show: true,
+            position: 'inside',
+            textStyle: {
+              color:'white',
+              fontSize: px(20)
+            },
+            formatter(options) {
+              return (options.value * 100).toFixed(0) + '%';
+            }
+          },
+          labelLine: {show:false},
+          itemStyle: {
+            borderColor: '#0F113A',
+            borderWidth: px(4)
+          },
+          data: [
+            {value: 0.08, name: '10-20'},
+            {value: 0.09, name: '20-30'},
+            {value: 0.23, name: '30-40'},
+            {value: 0.27, name: '40-50'},
+            {value: 0.33, name: '50-60'},
+          ]
         }
-      ].map(obj => ({
-        ...obj,
-        symbol: 'circle',
-        symbolSize: px(8),
-        lineStyle: {width: px(2)}
-      }))
+      ]
     }));
   }, []);
 
 
   return (
-    <div className="bordered 发案趋势">
-      <h2>发案趋势分析</h2>
-      <div ref={divRef} className="chart">
-
+    <div className="年龄段分布-图二">
+      <div className="chart">
+        <div className="main" ref={divRef}/>
+        <div className="text">年龄段</div>
+      </div>
+      <div className="legend">
+        <span style={{background: colors[0]}}/>10-20
+        <span style={{background: colors[1]}}/>20-30
+        <span style={{background: colors[2]}}/>30-40
+        <span style={{background: colors[3]}}/>40-50
+        <span style={{background: colors[4]}}/>50-60
       </div>
     </div>
   );
