@@ -44,7 +44,7 @@
   > main {
     width: px(2420);
     margin: 0 auto;
-    padding: px(30);
+    padding-top: px(30);
     flex: 1;
     display: grid;
     grid-template:
@@ -63,6 +63,7 @@
       box-shadow: 0 0 2px 0 #0e325f, inset 0 0 2px 0 #0e325f;
       background: #0c1139;
       &::before {
+        pointer-events: none;
         content: '';
         position: absolute;
         left: 0;
@@ -83,6 +84,9 @@
 
     > .section1 {
       grid-area: box1;
+    }
+
+    >.section1, .section2, .section4, .section5 {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -94,6 +98,8 @@
 
     > .section3 {
       grid-area: box3;
+      display: flex;
+      align-items: flex-end;
     }
 
     > .section4 {
@@ -102,9 +108,6 @@
 
     > .section5 {
       grid-area: box5;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       > .row1 {
         height: px(317);
       }
@@ -140,10 +143,10 @@
       }
     }
     .管辖统计 {
-      height: px(315);
+      height: px(320);
     }
     .破获排名 {
-      height: px(435);
+      height: px(400);
       .legend {
         display: flex;
         align-items: center;
@@ -163,12 +166,10 @@
         }
       }
     }
-    .发案趋势 {
-      height: px(380);
+    .发案趋势, .时段分析{
+      height: px(363);
     }
-    .时段分析 {
-      height: px(380);
-    }
+
     .战果数对比, .作案手段 {
       height: px(350);
       padding: 0 px(24);
@@ -206,7 +207,7 @@
       }
     }
     .分布地 {
-      height: px(770);
+      height: px(760);
       background: transparent;
       > .wrapper {
         flex: 1;
