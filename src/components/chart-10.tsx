@@ -4,10 +4,17 @@ import {px} from '../shared/px';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 
 export const Chart10 = () => {
+  const data = [40, 24, 22, 19, 32];
   const divRef = useRef(null);
+  const myChart = useRef(null);
   useEffect(() => {
-    let myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartsOptions({
+    setInterval(() => {
+      const newData = Array(5).fill(1).map(i => Math.random()*(50 - 10) + 10);
+      updateData(newData);
+    }, 3000)
+  }, []);
+  const updateData = (data) => {
+    myChart.current.setOption(createEchartsOptions({
       xAxis: {
         data: ['入室抢劫', '当街盗窃', '团伙诈骗', '刑事案件', '民事案件'],
         axisTick: {show: false},
@@ -39,7 +46,7 @@ export const Chart10 = () => {
       },
       series: [{
         type: 'bar',
-        data: [40, 24, 22, 19, 32],
+        data: data,
         itemStyle: {
           normal: {
             color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
@@ -53,8 +60,11 @@ export const Chart10 = () => {
         }
       }]
     }));
+  }
+  useEffect(() => {
+    myChart.current = echarts.init(divRef.current);
+    updateData(data);
   }, []);
-
 
   return (
     <div ref={divRef} className="chart">

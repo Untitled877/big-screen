@@ -4,10 +4,17 @@ import {px} from '../shared/px';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 
 export const Chart9 = () => {
+  const data = [0.2, 0.22, 0.28, 0.36, 0.26, 0.19, 0.13, 0.11];
   const divRef = useRef(null);
+  const myChart = useRef(null);
   useEffect(() => {
-    let myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartsOptions({
+    setInterval(() => {
+      const newData = Array(8).fill(1).map(i => Math.random()*(0.4 - 0.1) + 0.1);
+      updateData(newData);
+    }, 3000)
+  }, []);
+  const updateData = (data) => {
+    myChart.current.setOption(createEchartsOptions({
       color: '#f39f14',
       legend: {
         bottom: px(-10),
@@ -51,7 +58,7 @@ export const Chart9 = () => {
         {
           name: '盗窃',
           type: 'line',
-          data: [0.2, 0.22, 0.28, 0.36, 0.26, 0.19, 0.13, 0.11],
+          data: data,
           symbol: 'circle',
           symbolSize: px(10),
           lineStyle: {width: px(2)},
@@ -66,8 +73,11 @@ export const Chart9 = () => {
           }
         },
       ],
-
     }));
+  }
+  useEffect(() => {
+    myChart.current = echarts.init(divRef.current);
+    updateData(data);
   }, []);
 
   return (

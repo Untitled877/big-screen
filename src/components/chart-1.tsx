@@ -4,10 +4,17 @@ import { px } from '../shared/px';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 
 export const Chart1 = () => {
+  const data = [40, 30, 25, 16, 23, 13, 18, 27, 32];
   const divRef = useRef(null);
+  const myChart = useRef(null);
   useEffect(() => {
-    let myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartsOptions({
+    setInterval(() => {
+      const newData = Array(9).fill(1).map(i => Math.random()*100);
+      updateData(newData);
+    }, 3000)
+  }, []);
+  const updateData = (data) => {
+    myChart.current.setOption(createEchartsOptions({
       xAxis: {
         data: ['城关区', '七里河区', '西固区', '安宁区', '红谷区', '永登区', '皋兰区', '榆中区', '兰州新区'],
         axisTick: {show: false},
@@ -39,9 +46,13 @@ export const Chart1 = () => {
       },
       series: [{
         type: 'bar',
-        data: [40, 30, 25, 16, 23, 13, 18, 27, 32]
+        data: data,
       }]
     }));
+  }
+  useEffect(() => {
+    myChart.current = echarts.init(divRef.current);
+    updateData(data);
   }, []);
 
 

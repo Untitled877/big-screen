@@ -4,10 +4,17 @@ import {px} from '../shared/px';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 
 export const Chart4 = () => {
+  const data = [0.15, 0.13, 0.11, 0.13, 0.14, 0.15, 0.18, 0.24, 0.27, 0.26, 0.25, 0.21, 0.14];
   const divRef = useRef(null);
+  const myChart = useRef(null);
   useEffect(() => {
-    let myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartsOptions({
+    setInterval(() => {
+      const newData = Array(13).fill(1).map(i => Math.random()*0.1);
+      updateData(newData);
+    }, 3000)
+  }, []);
+  const updateData = (data) => {
+    myChart.current.setOption(createEchartsOptions({
       grid: {
         x: px(40),
         y: px(20),
@@ -48,7 +55,7 @@ export const Chart4 = () => {
       series: [
         {
           type: 'line',
-          data: [0.15, 0.13, 0.11, 0.13, 0.14, 0.15, 0.18, 0.24, 0.27, 0.26, 0.25, 0.21, 0.14],
+          data: data,
           symbol: 'circle',
           symbolSize: px(10),
           lineStyle: {width: px(2)},
@@ -63,8 +70,11 @@ export const Chart4 = () => {
           }
         },
       ],
-
     }));
+  }
+  useEffect(() => {
+    myChart.current = echarts.init(divRef.current);
+    updateData(data);
   }, []);
 
   return (

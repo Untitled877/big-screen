@@ -4,7 +4,6 @@ import {px} from '../shared/px';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 
 export const Chart13 = () => {
-  const divRef = useRef(null);
   const data = [
     {value: 0.08, name: '东岗路'},
     {value: 0.06, name: '段家滩'},
@@ -16,9 +15,27 @@ export const Chart13 = () => {
     {value: 0.07, name: '酒泉路'},
     {value: 0.06, name: '天水路'}
   ];
+  const divRef = useRef(null);
+  const myChart = useRef(null);
   useEffect(() => {
-    let myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartsOptions({
+    setInterval(() => {
+      const random = Math.random()*(0.25-0.02) + 0.02;
+      const newData = [
+        {value: 0.08, name: '东岗路'},
+        {value: 0.06, name: '段家滩'},
+        {value: random-0.01, name: '雁北'},
+        {value: 0.09, name: '五泉山'},
+        {value: 0.12, name: '中山路'},
+        {value: random+0.02, name: '庆阳路'},
+        {value: 0.21, name: '武都路'},
+        {value: 0.07, name: '酒泉路'},
+        {value: random+0.01, name: '天水路'}
+      ];
+      updateData(newData);
+    }, 3000)
+  }, []);
+  const updateData = (data) => {
+    myChart.current.setOption(createEchartsOptions({
       xAxis: {
         data: data.map(i => i.name),
         axisTick: {show: false},
@@ -65,8 +82,11 @@ export const Chart13 = () => {
           }]),
         },
       ],
-
     }));
+  }
+  useEffect(() => {
+    myChart.current = echarts.init(divRef.current);
+    updateData(data);
   }, []);
 
   return (
