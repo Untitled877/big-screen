@@ -7,53 +7,61 @@ import china from '../geo/china.json';
 
 export const Chart6 = () => {
   const divRef = useRef(null);
-  const colors = {'青海省': '#BB31F7', '甘肃省': '#15B8FD', '新疆维吾尔自治区': '#06E1EE'};
+  const colors = {'青海省': '#1cedd8', '甘肃省': '#bb2ff5', '新疆维吾尔自治区': '#17b1fd'};
   useEffect(() => {
     let myChart = echarts.init(divRef.current);
     echarts.registerMap('CN', china);
     myChart.setOption(createEchartsOptions({
+      geo: {
+        map:'CN',
+        itemStyle: {
+          color: '#010D3D',
+          borderColor: '#01A7F7',
+        },
+        emphasis: {
+          label: {color: 'white', fontSize: px(22)},
+          itemStyle: {
+            areaColor: '#5470C6',
+          }
+        },
+      },
       xAxis: {show:false},
       yAxis: {show:false},
       series: [
         {
-          type: 'map',
-          mapType: 'CN', // 自定义扩展图表类型
-          data: [
-            {name: '甘肃省', value: 1},
-          ],
-          label: {show: false, color: 'white'},
-          itemStyle: {
-            areaColor: '#010D3D',
-            color: colors['甘肃省'],
-            borderColor: '#01A7F7',
-            emphasis: {
-              label: { color: 'white'},
-              areaColor: '#5470C6',
+          type: 'effectScatter',
+          coordinateSystem: 'geo',
+          color: colors['新疆维吾尔自治区'],
+          data:[
+            {
+              name: '新疆',
+              value: [84.9023,42.148]
+            }
+          ]
+        },
+        {
+          type: 'effectScatter',
+          coordinateSystem: 'geo',
+          color: colors['甘肃省'],
+          data:[
+            {
+              name: '甘肃',
+              value: [103.73,36.03],
+            }
+          ]
+        },
+        {
+          type: 'effectScatter',
+          coordinateSystem: 'geo',
+          color: colors['青海省'],
+          data:[
+            {
+              name: '青海',
+              value: [95.2402,35.4199]
             },
-          }
-        },
-        {
-          type: 'map',
-          mapType: 'CN', // 自定义扩展图表类型
-          data: [
-            {name: '新疆维吾尔自治区', value: 100},
-          ],
-          itemStyle: {
-            color: colors['新疆维吾尔自治区'],
-          }
-        },
-        {
-          type: 'map',
-          mapType: 'CN', // 自定义扩展图表类型
-          data: [
-            {name: '青海省', value: 100},
-          ],
-          itemStyle: {
-            color: colors['青海省'],
-          }
-        },
-      ],
-
+          ]
+        }
+      ]
     }));
   }, []);
 

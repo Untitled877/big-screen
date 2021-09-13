@@ -21,12 +21,12 @@ export const Chart13 = () => {
     myChart.setOption(createEchartsOptions({
       xAxis: {
         data: data.map(i => i.name),
-        interval:0,
         axisTick: {show: false},
         axisLine: {
           lineStyle: {color: '#083B70'}
         },
         axisLabel: {
+          interval:0,
           margin: px(8),
           formatter(val) {
             if (val.length > 2) {

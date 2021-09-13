@@ -32,7 +32,6 @@ export const Chart12 = () => {
         orient: 'vertical',
         left: 'left',
         top: 'center',
-        padding: px(20),
         textStyle: {
           color: '#588ac7'
         },
@@ -47,7 +46,7 @@ export const Chart12 = () => {
       series: [
         {
           type: 'pie',
-          radius: '50%',
+          radius: '75%',
           label:{show:false},
           center:['60%', '50%'],
           data: data,
